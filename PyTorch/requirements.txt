@@ -1,0 +1,5 @@
+numpy
+opencv-python
+torch
+Pillow
+scipy==1.1.0
