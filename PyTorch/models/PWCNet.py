@@ -10,7 +10,8 @@ import torch.nn as nn
 from torch.autograd import Variable
 import os
 os.environ['PYTHON_EGG_CACHE'] = 'tmp/' # a writable directory 
-from correlation_package.modules.corr import Correlation 
+#from correlation_cuda import Correlation 
+from external_packages.correlation_package.correlation import Correlation
 import numpy as np
 
 
@@ -31,7 +32,7 @@ def predict_flow(in_planes):
     return nn.Conv2d(in_planes,2,kernel_size=3,stride=1,padding=1,bias=True)
 
 def deconv(in_planes, out_planes, kernel_size=4, stride=2, padding=1):
-    return nn.ConvTranspose2d(in_planes, out_planes, kernel_size, stride, padding, bias=True)
+    return nn.ConvTranspose2d(int(in_planes), out_planes, kernel_size, stride, padding, bias=True)
 
 
 
@@ -131,7 +132,7 @@ class PWCDCNet(nn.Module):
 
         for m in self.modules():
             if isinstance(m, nn.Conv2d) or isinstance(m, nn.ConvTranspose2d):
-                nn.init.kaiming_normal(m.weight.data, mode='fan_in')
+                nn.init.kaiming_normal_(m.weight.data, mode='fan_in')
                 if m.bias is not None:
                     m.bias.data.zero_()
 
