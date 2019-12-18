@@ -4,24 +4,10 @@
 I updated the code, so that it runs with Python `3.6` & PyToch `1.3.1` & CUDA `9`. Tested only for inference. All credit goes to the authors.
 
 #### Installation
-The code was developed using Python 2.7 & PyTorch 0.2 & CUDA 8.0. There may be a problem related to software versions. To fix the problem, you may look at the implementation in PWCNet.py and replace the syntax to match the new pytorch environment. 
-Install correlation package (if you haven't installed this package before):
-- Go to external_packages/correlation-pytorch-master/, follow the instruction in the readme.MD file there
-- You might have to run the command in make_cuda.sh line by line
 
-Additionally, we provide a simple installation script using Anaconda for the above steps:
-```
-# setup environment
-conda create -n pwcnet_test python=2.7 anaconda
-conda activate pwcnet_test
-# install pytorch and other dependencies
-pip install http://download.pytorch.org/whl/cu80/torch-0.2.0.post3-cp27-cp27mu-manylinux1_x86_64.whl
-pip install torchvision visdom dominate opencv-python cffi
-# install external packages 
-cd external_packages/correlation-pytorch-master/
-bash make_cuda.sh
-cd ../../
-```
+Install correlation package (if you haven't installed this package before):
+- Execute `./install.sh`
+
 #### Test
 -  Test the code: execute script_pwc.py [image1_filename] [image2_filename] [save_flow_filename], e.g. 
 	 ```python script_pwc.py './data/frame_0010.png' './data/frame_0011.png' './tmp/frame_0010.flo'```
