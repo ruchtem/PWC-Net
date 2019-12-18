@@ -61,8 +61,9 @@ for _i, _inputs in enumerate(im_all):
 	im_all[_i] = torch.from_numpy(im_all[_i])
 	im_all[_i] = im_all[_i].expand(1, im_all[_i].size()[0], im_all[_i].size()[1], im_all[_i].size()[2])	
 	im_all[_i] = im_all[_i].float()
-    
-im_all = torch.autograd.Variable(torch.cat(im_all,1).cuda(), volatile=True)
+
+with torch.no_grad():    
+	im_all = torch.autograd.Variable(torch.cat(im_all,1).cuda())
 
 net = models.pwc_dc_net(pwc_model_fn)
 net = net.cuda()
