@@ -1,4 +1,8 @@
 
+#### Update version
+
+I updated the code, so that it runs with Python `3.6` & PyToch `1.3.1` & CUDA `9`. Tested only for inference. All credit goes to the authors.
+
 #### Installation
 The code was developed using Python 2.7 & PyTorch 0.2 & CUDA 8.0. There may be a problem related to software versions. To fix the problem, you may look at the implementation in PWCNet.py and replace the syntax to match the new pytorch environment. 
 Install correlation package (if you haven't installed this package before):
