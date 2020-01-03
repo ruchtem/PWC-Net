@@ -1,5 +1,5 @@
 [![License CC BY-NC-SA 4.0](https://img.shields.io/badge/license-CC4.0-blue.svg)](https://raw.githubusercontent.com/NVIDIA/FastPhotoStyle/master/LICENSE.md)
-![Python 2.7](https://img.shields.io/badge/python-2.7-green.svg)
+![Python 3.6](https://img.shields.io/badge/python-3.6-green.svg)
 
 ## PWC-Net: CNNs for Optical Flow Using Pyramid, Warping, and Cost Volume
 
@@ -9,11 +9,29 @@ Copyright (C) 2018 NVIDIA Corporation. All rights reserved. Licensed under the C
 
 ### Usage
 
-For Caffe users, please refer to [Caffe/README.md](Caffe/README.md).
+**Multi-Frame-Flow is not converted yet**
 
-For PyTorch users, please refer to [PyTorch/README.md](PyTorch/README.md)
+I adoped the original implementation in two ways:
 
-The PyTorch implementation almost matches the Caffe implementation (average EPE on the final pass of the Sintel training set: 2.31 by Pytorch and 2.29 by Caffe). 
+1. Restructure the code to meet the python package structure (at least almost)
+2. Port it to work with `python 3.6` and `PyTorch 1.3.1`. This included replacing the `correlation_package` with a `C++` version taken from `https://github.com/NVIDIA/flownet2-pytorch`.
+
+After installation it can be used like this:
+
+```Python
+from pwc_net import PWCNet
+net = PWCNet.pwc_dc_net("path/to/pwc_net/pwc_net.pth.tar")
+```
+
+### Installation
+
+Make sure cuda is setup correctly, especially `nvcc` is working. This setup was tested with `cuda 9.0`, `gcc 5.5.0`, and `g++ 5.5.0`. Not all cuda versions work with all gcc/g++ versions!
+
+```sh
+./install.sh
+pip install .   # pip install -e . if you plan to work on this code
+```
+
 
 ### Network Architecture
 
